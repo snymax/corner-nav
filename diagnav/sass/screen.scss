@@ -1,0 +1,92 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "bourbon/bourbon";
+@import "icon";
+$nav-button-icon:'.icon-hexicon';
+$nav-button-size:5rem;
+$nav-button-color:rgb(28, 128, 248);
+$nav-button-hover-color:rgb(0, 0, 0);
+$nav-button-background-color:rgba(0, 0, 0, 0.75);
+$nav-button-inner-size:2rem;
+$nav-button-margin:1rem; //really we will use absolute/fixed positioning
+$nav-bar-height:5rem;
+$nav-bar-background-color:rgba(0, 0, 0, 0.75);
+$nav-bar-font-size:3em;
+$nav-bar-link-color:rgb(255, 255, 255);
+$nav-bar-link-hover-color:rgb(28, 128, 248);
+$nav-bar-link-hover-background-color:rgba(255, 255, 255, 0.75);
+$nav-bar-link-visited-color:rgb(200, 200, 200);
+body {
+    //setting a top padding to prevent the page from falling under it initially
+    margin-top: $nav-button-size + $nav-button-margin*2
+}
+
+#diagnav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    ul {
+        background-color: $nav-bar-background-color;
+        font-size: $nav-bar-font-size;
+        @include align-items(stretch);
+        @include display(flex);
+        @include flex-direction(row);
+        @include justify-content(flex-center);
+        @include transform-origin(left top);
+        @include transform(rotate(45deg));
+        padding: 0 $nav-bar-height;
+        li {
+            @include flex(1);
+            font-size: inherit;
+            height: $nav-bar-height;
+            line-height: $nav-bar-height;
+            min-width: $nav-bar-height;
+            text-align: center;
+            vertical-align: middle;
+            //background-color:$nav-bar-background-color;
+            a {
+                color: $nav-bar-link-color;
+                text-decoration: none;
+                text-align: center;
+                vertical-align: middle;
+                @include transform(rotate(-45deg));
+                display: inline-block;
+                &[class*=icon-] {
+                    font-size: .25em;
+                    &:before {
+                        display: block;
+                        font-size: 3em;
+                    }
+                }
+                &:visited {
+                    color: $nav-bar-link-visited-color;
+                }
+            }
+            &:hover {
+                background-color: $nav-bar-link-hover-background-color;
+                a {
+                    color: $nav-bar-link-hover-color !important;
+                }
+            }
+        }
+    }
+    &:not(.open) {
+        @extend .icon,
+        .icon-hexicon;
+        font-size: $nav-button-size;
+        top: $nav-button-margin;
+        right: $nav-button-margin;
+        color: $nav-button-color;
+        text-align: center;
+        &:hover {
+            color: $nav-button-hover-color;
+        }
+        ul {
+            display: none;
+        }
+    }
+}
