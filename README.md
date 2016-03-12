@@ -22,11 +22,11 @@ add nav bar markdown
         <li><a href="#" title="Tips &amp; Tricks" class="icon-tiptricks">Tips &amp;<br>Tricks</a></li>
     </ul>
 </nav>
-
+```
 include the corner nav script
 ```html
 <script src="js/diagnav.js"></script>
-
+```
 ## About
 placed nav bar at 45 degree in the top right corner
 if text is to large text size wil be reduced
